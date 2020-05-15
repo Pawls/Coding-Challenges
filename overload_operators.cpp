@@ -51,3 +51,13 @@ ostream& operator << (ostream& out, Complex& c1) {
 //<< should print a complex number in the format "a+ib"
 
 int main()
+{
+    Complex x,y;
+    string s1,s2;
+    cin>>s1;
+    cin>>s2;
+    x.input(s1);
+    y.input(s2);
+    Complex z=x+y;
+    cout<<z<<endl;
+}
