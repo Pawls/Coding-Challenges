@@ -1,3 +1,6 @@
+# This solution fails to consider depth-first insertions. It returns valid
+# sequences if inserted breadth-first.
+
 class Node:
 
     def __init__(self, data):
@@ -83,6 +86,7 @@ def bst_sequence(tree):
     levels = list_of_depths_dfs(tree)
     perms = perm_list(levels)
     for solution in _bst_sequence(perms):
+        print(solution)
         # This line flattens solution, which is a 2D list
         print([item for sublist in solution for item in sublist])
 
@@ -94,7 +98,13 @@ def _bst_sequence(arr):
             for i in arr[0]:
                 yield [i] + perm
 
-tree = minimal_tree([2,3,5,6,7,9,10,13])
+#tree = minimal_tree([2,3,5,6,7,9,10,13])
+                
+tree = minimal_tree([1,2,3,4,5,6])
+#levels = list_of_depths_dfs(tree)
+#print(levels)
+#print()
+#print(perm_list(levels))
 print(tree)
 bst_sequence(tree)
 
