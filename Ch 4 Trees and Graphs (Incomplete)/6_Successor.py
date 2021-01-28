@@ -39,7 +39,25 @@ class Node:
             else:
                 self.right.add(data)
 
+# Iterative
 def successor(node):
+    if node.right:
+        ptr = node.right
+        while ptr.left:
+            ptr = ptr.left
+        return ptr
+
+    parent = node.parent
+    while parent:
+        if node == parent.left:
+            return parent
+        node = parent
+        parent = parent.parent
+
+    return None
+
+# Recursive and iterative
+def successor2(node):
     if node.right:
         return min_leaf(node.right)
 
