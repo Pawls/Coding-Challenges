@@ -1,5 +1,39 @@
 from LinkedList import LinkedList
 
+def sumLists_leetcode(self, ll1, ll2):
+    ll_out = None
+    ptr1 = ll1
+    ptr2 = ll2
+
+    carry = 0
+    while ptr1 and ptr2:
+        result = ptr1.val + ptr2.val + carry
+        carry = 0
+        if result > 9:
+            carry = 1
+        if not ll_out:
+            ll_out = ListNode(result % 10)
+            ptr_add = ll_out
+        else:
+            ptr_add.next = ListNode(result % 10)
+            ptr_add = ptr_add.next
+        ptr2 = ptr2.next
+        ptr1 = ptr1.next
+        
+    while ptr1:
+        ll_out.add(ptr1.val+carry)
+        carry = 0
+        ptr1 = ptr1.next
+        
+    while ptr2:
+        ll_out.add(ptr2.val+carry)
+        carry = 0
+        ptr2 = ptr2.next
+        
+    if carry != 0:
+        ptr_add.next = ListNode(carry)
+    return ll_out
+
 def sumLists(ll1, ll2):
     ll_out = LinkedList()
     if len(ll1) > len(ll2):
